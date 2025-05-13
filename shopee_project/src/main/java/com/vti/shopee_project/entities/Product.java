@@ -26,14 +26,56 @@ public class Product {
         private String name;
         private List<String> options;
 
-        // Getters, Setters, Constructors
+        public Variant() {}
+
+        public Variant(String name, List<String> options) {
+            this.name = name;
+            this.options = options;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public List<String> getOptions() {
+            return options;
+        }
+
+        public void setOptions(List<String> options) {
+            this.options = options;
+        }
     }
 
     public static class Rating {
         private double average;
         private int count;
 
-        // Getters, Setters, Constructors
+        public Rating() {}
+
+        public Rating(double average, int count) {
+            this.average = average;
+            this.count = count;
+        }
+
+        public double getAverage() {
+            return average;
+        }
+
+        public void setAverage(double average) {
+            this.average = average;
+        }
+
+        public int getCount() {
+            return count;
+        }
+
+        public void setCount(int count) {
+            this.count = count;
+        }
     }
 
     // Getters, Setters, Constructors
