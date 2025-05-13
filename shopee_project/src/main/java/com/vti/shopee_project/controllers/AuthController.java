@@ -6,6 +6,7 @@ import com.vti.shopee_project.repositories.UserRepository;
 import com.vti.shopee_project.request.AuthRequest;
 import com.vti.shopee_project.response.AuthResponse;
 import com.vti.shopee_project.utils.JwtUtil;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -25,13 +26,13 @@ public class AuthController {
     private JwtUtil jwtUtil;
 
     @PostMapping("/register")
-    public ResponseEntity<User> register(@RequestBody User user) {
+    public ResponseEntity<User> register(@Valid @RequestBody User user) {
         user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
         return ResponseEntity.ok(userRepo.save(user));
     }
 
     @PostMapping("/login")
-    public ResponseEntity<AuthResponse> login(@RequestBody AuthRequest request) {
+    public ResponseEntity<AuthResponse> login(@Valid @RequestBody AuthRequest request) {
         User user = userRepo.findByEmail(request.getEmail())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 

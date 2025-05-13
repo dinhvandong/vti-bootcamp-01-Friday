@@ -21,7 +21,7 @@ public class ProfileController {
     @Autowired
     private UserRepository userRepo;
 
-    @GetMapping
+    @GetMapping("/me")
     public ResponseEntity<?> getProfile(@RequestHeader("Authorization") String authHeader) {
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             return ResponseEntity.status(401).build();
